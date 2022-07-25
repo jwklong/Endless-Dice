@@ -138,7 +138,7 @@ function scrambleDice(grid) {
                 createTextPopupParticle("Scrambled!",gd.x+gd.width/2,gd.y+gd.height/2,true)
                 if (gg !== undefined) if (gg.type !== "scrambler") {
                     var tp = Math.floor(Math.random()*3)
-                    gg.type = ["normal","attack","heal"][tp]
+                    gg.type = ["normal","attack","heal","test"][tp]
                     gg.energy = [1,2,2][tp]
                 }
             }
@@ -460,7 +460,7 @@ function updateGridDices(id) {
         if (d.pick.includes(i)) g.className += " picked"
 
         if (gd) {
-            if (gd.type != "normal") g.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
+            if (gd.type != "normal" || gd.type != "test") g.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
             if (gd.value < 10) g.innerHTML += `<img draggable="false" src='images/D${gd.value}.png'>`
         }
     }
@@ -501,7 +501,7 @@ function spawnRandomDice(id,update=false) {
     var pos = s[Math.floor(Math.random()*s.length)]
     var tp = Math.floor(Math.random()*3)
 
-    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal"][tp], energy: [1,2,2][tp]}
+    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","test"][tp], energy: [1,2,2][tp]}
 
     if (d.cards.includes('d7') && Math.random() < .15) { // 
         grid[pos].type = "scrambler"
