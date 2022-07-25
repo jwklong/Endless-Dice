@@ -478,7 +478,7 @@ function updateGridDices(id) {
             pdiv.innerHTML = "<div>"+(gd ? gd.value > 9 ? gd.value : "" : "")+"</div>"
             pdiv.className = "picked_dice "+(gd ? gd.type : "empty")
 
-            if (gd.type != "normal") pdiv.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
+            if (gd.type != "normal" || gd.type != "test") pdiv.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
             if (gd.value < 10) pdiv.innerHTML += `<img draggable="false" src='images/D${gd.value}.png'>`
         }
     }
@@ -499,7 +499,7 @@ function spawnRandomDice(id,update=false) {
     var d = data[stringToString[id][0]]
     var s = tmp[stringToString[id][1]]
     var pos = s[Math.floor(Math.random()*s.length)]
-    var tp = Math.floor(Math.random()*3)
+    var tp = Math.floor(Math.random()*4)
 
     grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","test"][tp], energy: [1,2,2][tp]}
 
