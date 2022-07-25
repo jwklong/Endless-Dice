@@ -38,6 +38,11 @@ const newData = _=>{
             energyCos: 0,
             health: 50,
             maxHealth: 50,
+            poision: {
+                active: false,
+                damage: 0,
+                times: 0,
+            },
             energy: 0,
             maxEnergy: 10,
 
