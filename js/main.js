@@ -15,7 +15,7 @@ const newData = _=>{
             product: 1,
             energyCos: 0,
             health: 100,
-            poision: {
+            poison: {
                 active: false,
                 damage: 0,
                 times: 0,
@@ -38,7 +38,7 @@ const newData = _=>{
             energyCos: 0,
             health: 50,
             maxHealth: 50,
-            poision: {
+            poison: {
                 active: false,
                 damage: 0,
                 times: 0,
