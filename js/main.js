@@ -267,6 +267,12 @@ function makeMove(move="player") {
             }
         }
         
+        if (d.poison.active == true) {
+            dmg += d.poison.damage
+            d.poison.times -= 1
+            if (d.poison.times == 0) { d.poison.active = false }
+        }
+        
         d.energyCos = 0
         d.pick = [0,0]
         d.pickStep = 0
@@ -458,7 +464,7 @@ function updateGridDices(id) {
         document.getElementById("player_pass").style.display = data.move == "player" ? "inline" : "none"
     }
 
-    document.getElementById(dd+"_health").innerHTML = "Health: " + format(d.health) + (d.poison.active ? ` <span style="color: #90c">(Poisoned: ${d.poison.damage} * ${d.poison.times})</span>` : null)
+    document.getElementById(dd+"_health").innerHTML = "Health: " + format(d.health) + (d.poison.active ? ` <span style="color: #90c">(Poisoned: ${d.poison.damage} * ${d.poison.times})</span>` : "")
     document.getElementById(dd+"_energy").innerHTML = format(d.energy) + " / " + format(d.maxEnergy)
     document.getElementById(dd+"_mult").innerHTML = d.mult.toFixed(2)
     document.getElementById(dd+"_result").innerHTML = (d.pickStep > 1 || (id=="e_grid" && data.enemyReady)) ? format(Math.floor(d.product*d.mult)) : "?"
