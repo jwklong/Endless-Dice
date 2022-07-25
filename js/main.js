@@ -283,7 +283,7 @@ function makeMove(move="player") {
             createTextPopupParticle(`<span class="red">${crit+"-"+format(dmg)}</span>`,oh.x+oh.width/2,oh.y)
         }
         if (psn > 0) {
-            createTextPopupParticle(`<span class="red">${crit+"-"+format(dmg)}</span>`,dh.x+dh.width/2,dh.y)
+            createTextPopupParticle(`<span style="color: #90c">${crit+"-"+format(dmg)}</span>`,dh.x+dh.width/2,dh.y)
         }
         if (heal > 0) {
             createTextPopupParticle(`<span class="green">${crit+"+"+format(heal)}</span>`,dh.x+dh.width/2,oh.y)
