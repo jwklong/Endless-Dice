@@ -245,6 +245,11 @@ function makeMove(move="player") {
                 d.health += p
                 heal += p
             }
+            else if (dice.type == "poison") {
+                od.poison.active = true
+                od.poison.times = 4
+                od.poison.damage = Math.floor(p/4)
+            }
             else if (d.cards.includes("o2") && dice.type == "normal") {
                 od.health = Math.max(od.health-Math.ceil(move=="player"?p/4:p/2),0)
                 dmg += Math.ceil(move=="player"?p/4:p/2)
