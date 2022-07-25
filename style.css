@@ -156,6 +156,12 @@ br {
     border-color: #004400;
     background-color: #0a0;
 }
+.picked_dice.test,
+.grid-dice.test {
+    border-style: solid;
+    border-color: #004400;
+    background-color: #67008c;
+}
 
 .picked_dice.scrambler,
 .grid-dice.scrambler {
