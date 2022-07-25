@@ -156,11 +156,11 @@ br {
     border-color: #004400;
     background-color: #0a0;
 }
-.picked_dice.test,
-.grid-dice.test {
+.picked_dice.poison,
+.grid-dice.poison {
     border-style: solid;
-    border-color: #004400;
-    background-color: #67008c;
+    border-color: #440044;
+    background-color: #90c;
 }
 
 .picked_dice.scrambler,
