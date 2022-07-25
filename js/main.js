@@ -225,7 +225,7 @@ function makeMove(move="player") {
 
         var dices = [g[d.pick[0]],g[d.pick[1]]]
         var p = Math.floor(d.product*d.mult)
-        var dmg = 0, heal = 0, crit = "", s = [dices[0].type,dices[1].type].includes("scrambler")?3:1
+        var dmg = 0, heal = 0, psn = 0, crit = "", s = [dices[0].type,dices[1].type].includes("scrambler")?3:1
         if (Math.random() < d.crit) {
             crit = "Critical! "
             p *= 2
@@ -268,7 +268,8 @@ function makeMove(move="player") {
         }
         
         if (d.poison.active == true) {
-            dmg += d.poison.damage
+            psn += d.poison.damage
+            d.health -= Math.max(d.health-d.poison.damage,0)
             d.poison.times -= 1
             if (d.poison.times == 0) { d.poison.active = false }
         }
@@ -280,6 +281,9 @@ function makeMove(move="player") {
 
         if (dmg > 0) {
             createTextPopupParticle(`<span class="red">${crit+"-"+format(dmg)}</span>`,oh.x+oh.width/2,oh.y)
+        }
+        if (psn > 0) {
+            createTextPopupParticle(`<span class="red">${crit+"-"+format(dmg)}</span>`,dh.x+dh.width/2,dh.y)
         }
         if (heal > 0) {
             createTextPopupParticle(`<span class="green">${crit+"+"+format(heal)}</span>`,dh.x+dh.width/2,oh.y)
