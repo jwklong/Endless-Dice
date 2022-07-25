@@ -138,8 +138,8 @@ function scrambleDice(grid) {
                 createTextPopupParticle("Scrambled!",gd.x+gd.width/2,gd.y+gd.height/2,true)
                 if (gg !== undefined) if (gg.type !== "scrambler") {
                     var tp = Math.floor(Math.random()*3)
-                    gg.type = ["normal","attack","heal","test"][tp]
-                    gg.energy = [1,2,2][tp]
+                    gg.type = ["normal","attack","heal","poison"][tp]
+                    gg.energy = [1,2,2,3][tp]
                 }
             }
         }
@@ -460,7 +460,7 @@ function updateGridDices(id) {
         if (d.pick.includes(i)) g.className += " picked"
 
         if (gd) {
-            if (gd.type != "normal" && gd.type != "test") g.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
+            if (gd.type != "normal" && gd.type != "poison") g.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
             if (gd.value < 10) g.innerHTML += `<img draggable="false" src='images/D${gd.value}.png'>`
         }
     }
@@ -478,7 +478,7 @@ function updateGridDices(id) {
             pdiv.innerHTML = "<div>"+(gd ? gd.value > 9 ? gd.value : "" : "")+"</div>"
             pdiv.className = "picked_dice "+(gd ? gd.type : "empty")
 
-            if (gd.type != "normal" && gd.type != "test") pdiv.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
+            if (gd.type != "normal" && gd.type != "poison") pdiv.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
             if (gd.value < 10) pdiv.innerHTML += `<img draggable="false" src='images/D${gd.value}.png'>`
         }
     }
@@ -499,9 +499,9 @@ function spawnRandomDice(id,update=false) {
     var d = data[stringToString[id][0]]
     var s = tmp[stringToString[id][1]]
     var pos = s[Math.floor(Math.random()*s.length)]
-    var tp = Math.floor(Math.random()*4)
+    var tp = Math.floor(Math.random()*7)
 
-    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal","test"][tp], energy: [1,2,2,3][tp]}
+    grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","normal","attack","attack","heal","heal","poison"][tp], energy: [1,1,2,2,2,2,3][tp]}
 
     if (d.cards.includes('d7') && Math.random() < .15) { // 
         grid[pos].type = "scrambler"
