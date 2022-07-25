@@ -269,7 +269,7 @@ function makeMove(move="player") {
         
         if (d.poison.active == true) {
             psn += d.poison.damage
-            d.health -= Math.max(d.health-d.poison.damage,0)
+            d.health = Math.max(d.health-d.poison.damage,0)
             d.poison.times -= 1
             if (d.poison.times == 0) { d.poison.active = false }
         }
