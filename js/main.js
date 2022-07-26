@@ -254,6 +254,7 @@ function makeMove(move="player") {
                 if (d.cards.includes("p3")) {
                     od.poison.times -= 1
                     dmg += od.poison.damage
+                    od.health = Math.max(od.health-od.poison.damage,0)
                 }
             }
             else if (d.cards.includes("o2") && dice.type == "normal") {
