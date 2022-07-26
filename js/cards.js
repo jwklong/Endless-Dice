@@ -205,4 +205,20 @@ const CARDS = {
             data[x].crit += 0.05
         },
     ],
+    p1: [
+        "Poison Spread",
+        x=>`Increase ${['your',"enemy's"][x]} poison damage spread by <b class='green'>1</b>`,
+        x=>true,
+        x=>{
+            data[x].poison.maxTimes += 1
+        },
+    ],
+    p2: [
+        "Poison Precision",
+        x=>`Decrease ${['your',"enemy's"][x]} poison damage spread by <b class='green'>1</b>`,
+        x=>data[x].poison.maxTimes>2,
+        x=>{
+            data[x].poison.maxTimes -= 1
+        },
+    ],
 }
