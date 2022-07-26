@@ -146,6 +146,22 @@ const CARDS = {
             data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*2)
         },
     ],
+    en6: [
+        "Small Enemy",
+        x=>`Decrease enemy's starting health by <b class='green'>20%</b>`,
+        x=>x=="player" && data.round < 10,
+        x=>{
+            data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*0.8)
+        },
+    ],
+    en7: [
+        "Small Enemy",
+        x=>`Decrease enemy's starting health by <b class='green'>10%</b>`,
+        x=>x=="player" && data.round >= 10,
+        x=>{
+            data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*0.9)
+        },
+    ],
 
     m1: [
         "Multiplier Increaser",
@@ -205,6 +221,7 @@ const CARDS = {
             data[x].crit += 0.05
         },
     ],
+    
     p1: [
         "Poison Spread",
         x=>`Increase ${['your',"enemy's"][x]} poison damage spread by <b class='green'>1</b>`,
@@ -220,5 +237,11 @@ const CARDS = {
         x=>{
             data[x].poison.maxTimes -= 1
         },
+    ],
+    p3: [
+        "Active Poison",
+        x=>`${['Your',"Enemy's"][x]} Poison Dice will deal it's first damage when used`,
+        x=>!data[x].cards.includes("p3"),
+        x=>{},
     ],
 }
