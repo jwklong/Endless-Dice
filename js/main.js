@@ -265,6 +265,9 @@ function makeMove(move="player") {
                 d.health += p*s
                 heal += p*s
             }
+            else if (dices[0].type == "poison" || dices[1].type == "poison") {
+                od.poison.times += 4
+            }
         }
         
         if (d.poison.active == true) {
@@ -485,7 +488,7 @@ function updateGridDices(id) {
         if (d.pick.includes(i)) g.className += " picked"
 
         if (gd) {
-            if (gd.type != "normal" && gd.type != "poison") g.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
+            if (gd.type != "normal") g.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
             if (gd.value < 10) g.innerHTML += `<img draggable="false" src='images/D${gd.value}.png'>`
         }
     }
@@ -503,7 +506,7 @@ function updateGridDices(id) {
             pdiv.innerHTML = "<div>"+(gd ? gd.value > 9 ? gd.value : "" : "")+"</div>"
             pdiv.className = "picked_dice "+(gd ? gd.type : "empty")
 
-            if (gd.type != "normal" && gd.type != "poison") pdiv.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
+            if (gd.type != "normal") pdiv.innerHTML += `<img draggable="false" src='images/${gd.type}.png'>`
             if (gd.value < 10) pdiv.innerHTML += `<img draggable="false" src='images/D${gd.value}.png'>`
         }
     }
