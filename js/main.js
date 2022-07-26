@@ -250,7 +250,7 @@ function makeMove(move="player") {
             else if (dice.type == "poison") {
                 od.poison.active = true
                 od.poison.times = d.poison.maxTimes
-                od.poison.damage = Math.floor(p/4)
+                od.poison.damage = Math.floor(p/d.poison.maxTimes)
             }
             else if (d.cards.includes("o2") && dice.type == "normal") {
                 od.health = Math.max(od.health-Math.ceil(move=="player"?p/4:p/2),0)
@@ -268,7 +268,7 @@ function makeMove(move="player") {
                 heal += p*s
             }
             else if (dices[0].type == "poison" || dices[1].type == "poison") {
-                od.poison.times += 4
+                od.poison.times *= 2
             }
         }
         
@@ -291,7 +291,7 @@ function makeMove(move="player") {
             createTextPopupParticle(`<span class="green">${crit+"+"+format(heal)}</span>`,dh.x+dh.width/2,oh.y)
         }
         if (psn > 0) {
-            createTextPopupParticle(`<span style="color: #90c">${crit+"-"+format(psn)}</span>`,dh.x+dh.width/2,dh.y)
+            createTextPopupParticle(`<span style="color: #90c">${"-"+format(psn)}</span>`,dh.x+dh.width/2,dh.y)
         }
 
         updateGridDices("p_grid")
