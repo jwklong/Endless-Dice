@@ -250,7 +250,7 @@ function makeMove(move="player") {
             else if (dice.type == "poison") {
                 od.poison.active = true
                 od.poison.times = d.poison.maxTimes
-                od.poison.damage = Math.floor(p/d.poison.maxTimes)
+                od.poison.damage = Math.max(Math.floor(p/d.poison.maxTimes),1)
                 if (d.cards.includes("p3")) {
                     od.poison.times -= 1
                     dmg += od.poison.damage
