@@ -19,6 +19,7 @@ const newData = _=>{
                 active: false,
                 damage: 0,
                 times: 0,
+                maxTimes: 4,
             },
             energy: 10,
             maxEnergy: 10,
@@ -42,6 +43,7 @@ const newData = _=>{
                 active: false,
                 damage: 0,
                 times: 0,
+                maxTimes: 4,
             },
             energy: 0,
             maxEnergy: 10,
@@ -247,7 +249,7 @@ function makeMove(move="player") {
             }
             else if (dice.type == "poison") {
                 od.poison.active = true
-                od.poison.times = 4
+                od.poison.times = d.poison.maxTimes
                 od.poison.damage = Math.floor(p/4)
             }
             else if (d.cards.includes("o2") && dice.type == "normal") {
