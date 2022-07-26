@@ -29,10 +29,11 @@ const POPUP = {
     2.2) Red Dice is called <b>"Attack Dice"</b>, which attacks the enemy by result.<br>
     2.3) Green Dice is called <b>"Heal Dice"</b>, which heals you by result.<br>
     2.4) Blue Dice is called <b>"Dice Scrambler"</b>, which scrambles near dice's type every action.<br>
+    2.5) Purple Dice is called <b>"Poison Dice"</b>, which damages the enemy when they make a move.<br>
     3) Bottom-Right of each Dice have energy cost.<br>
     4) If you are ready to apply picked Dices and afford energies, click <b>"Make a Move"</b> button to attack or heal anything.<br>
     5) If you make with <b>SAME</b> dices, will be stronger!<br>
-    6) If you miss picking Dice, click <b>"Clear picking Dices"</b> button to clear.<br>
+    6) If you oicked the wrong Dice, click <b>"Clear picking Dices"</b> button to clear.<br>
     7) When you ran out of energy, click <b>"Pass to Enemy"</b> button to pass.<br>
     8) Every round, enemy's starting health & multiplier are increased.<br>
     </span>
