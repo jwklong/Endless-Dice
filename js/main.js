@@ -251,6 +251,10 @@ function makeMove(move="player") {
                 od.poison.active = true
                 od.poison.times = d.poison.maxTimes
                 od.poison.damage = Math.floor(p/d.poison.maxTimes)
+                if (d.cards.includes("p3")) {
+                    od.poison.times -= 1
+                    dmg += od.poison.damage
+                }
             }
             else if (d.cards.includes("o2") && dice.type == "normal") {
                 od.health = Math.max(od.health-Math.ceil(move=="player"?p/4:p/2),0)
