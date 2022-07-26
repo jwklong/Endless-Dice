@@ -218,7 +218,7 @@ function makeMove(move="player") {
     var dh = document.getElementById(move+"_health").getBoundingClientRect()
     var oh = document.getElementById(stringToString[move][1]+"_health").getBoundingClientRect()
 
-    if ((d.pickStep > 1 || move == "enemy") && d.energy >= d.energyCos) {
+    if ((d.pickStep > 1 || (move == "enemy")) && d.energy >= d.energyCos) {
         d.energy -= d.energyCos
 
         if (d.cards.includes("e3") && Math.random() < .2) d.energy += 2
@@ -272,7 +272,7 @@ function makeMove(move="player") {
         
         if (d.poison.active == true) {
             psn += d.poison.damage
-            d.health = Math.max(d.health-d.poison.damage,0)
+            d.health = Math.max(d.health-d.poison.damage,1)
             d.poison.times -= 1
             if (d.poison.times == 0) { d.poison.active = false }
         }
@@ -285,11 +285,11 @@ function makeMove(move="player") {
         if (dmg > 0) {
             createTextPopupParticle(`<span class="red">${crit+"-"+format(dmg)}</span>`,oh.x+oh.width/2,oh.y)
         }
-        if (psn > 0) {
-            createTextPopupParticle(`<span style="color: #90c">${crit+"-"+format(psn)}</span>`,dh.x+dh.width/2,dh.y)
-        }
         if (heal > 0) {
             createTextPopupParticle(`<span class="green">${crit+"+"+format(heal)}</span>`,dh.x+dh.width/2,oh.y)
+        }
+        if (psn > 0) {
+            createTextPopupParticle(`<span style="color: #90c">${crit+"-"+format(psn)}</span>`,dh.x+dh.width/2,dh.y)
         }
 
         updateGridDices("p_grid")
