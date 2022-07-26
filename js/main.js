@@ -335,6 +335,7 @@ function resetTwo(id) {
     data[id].pick = [0,0]
     data[id].pickStep = 0
     data[id].product = 1
+    data[id].poison.active = false
 }
 
 function conclusion() {
